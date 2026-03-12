@@ -39,9 +39,31 @@ class GatsApi {
 		yellow: 2,
 		green: 3,
 		blue: 4,
-		purple: 5 // this is actually pink but according to the owner of the game (who isn't crinfarr btw) it is purple
+		purple: 5 // this is actually pink but according to the owner of the game it is purple
 	}
 
+	static upgrades = {
+		noRecoil: 0, 
+		binoculars: 1,
+		thermal: 2,
+		damage: 3,
+		largeMags: 4,
+		accuracy: 5,
+		silencer: 6,
+		speed: 7,
+		range: 8,
+		kevlar: 9,
+		shield: 10,
+		medKit: 11,
+		grenade: 12,
+		knife: 13,
+		build: 14,
+		camo: 15,
+		dash: 16,
+		gas: 17,
+		landmine: 18,
+		frag: 19
+	}
 }
 
 window.GatsApi = GatsApi;
