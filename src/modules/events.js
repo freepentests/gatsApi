@@ -42,31 +42,30 @@ export class Events {
 			const players = [];
 
 			for (const i in entities) {
-				if (i !== 0) {
-					const entity = entities[i];
-					const values = entity.split(',');
-					if (values[0] !== 'b') return; // "b" is for players
+				const entity = entities[i];
 
-					const playerId = values[1];
-					const playerX = values[2];
-					const playerY = values[3];
-					const speedX = values[4];
-					const speedY = values[5];
-					const aimingYaw = values[6];
+				const values = entity.split(',');
+				if (values[0] !== 'b') continue; // "b" is for players
 
-					players.push(new Player(
-						playerId,
-						playerX,
-						playerY,
-						speedX,
-						speedY,
-						aimingYaw
-					));
-				}
-			};
+				const playerId = values[1];
+				const playerX = values[2];
+				const playerY = values[3];
+				const speedX = values[4];
+				const speedY = values[5];
+				const aimingYaw = values[6];
+
+				players.push(new Player(
+					playerId,
+					playerX,
+					playerY,
+					speedX,
+					speedY,
+					aimingYaw
+				));
+			}
 
 			if (players.length > 0) return callback(players);
-		})
+		});
 	}
 }
 
