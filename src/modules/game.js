@@ -4,11 +4,11 @@ export class Game {
 	}
 
 	sendChatMessage(message) {
-		this.ws.send(`c,${message}\x00`);
+		this.ws.send(`c,${message.replaceAll(',', '~')}\x00`);
 	}
 
 	joinGame(weaponId, armorLevel, color) {
-		this.ws.send(`c,${weaponId},${armorLevel},${color},\x00`);
+		this.ws.send(`0,${weaponId},${armorLevel},${color}\x00`);
 	}
 }
 

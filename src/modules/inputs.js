@@ -4,7 +4,7 @@ export class Inputs {
 	}
 
 	sendInput(argOne, argTwo) {
-		this.ws.send(`k,${argOne},${argTwo},\x00`);
+		this.ws.send(`k,${argOne},${argTwo}\x00`);
 	}
 
 	sendPing() {
@@ -27,7 +27,7 @@ export class Inputs {
 		this.sendInput(6, 1); // 6 is the opcode for shooting
 	}
 
-	startShoot() {
+	stopShoot() {
 		this.sendInput(6, 0); // 6 is the opcode for shooting
 	}
 }

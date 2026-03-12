@@ -16,3 +16,5 @@ class GatsApi {
 	}
 }
 
+window.GatsApi = GatsApi;
+

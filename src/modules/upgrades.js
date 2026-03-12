@@ -8,8 +8,8 @@ export class Upgrades {
 	}
 
 	useItem() {
-		this.ws.send(`u,5,1\x00`);
-		this.ws.send(`u,5,0\x00`);
+		this.ws.send(`k,5,1\x00`);
+		this.ws.send(`k,5,0\x00`);
 	}
 }
 
