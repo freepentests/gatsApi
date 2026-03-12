@@ -5,6 +5,8 @@ import { Events } from './modules/events.js'
 
 class GatsApi {
 	constructor(ws) {
+		ws.binaryType = 'arraybuffer';
+
 		this.game = new Game(ws);
 		this.inputs = new Inputs(ws);
 		this.upgrades = new Upgrades(ws);
