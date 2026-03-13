@@ -12,9 +12,9 @@
   "license": "ISC",
   "type": "module",
   "browserslist": [
-	  "ie >= 11",
-	  "> 0.2%",
-	  "not dead"
+  	"> 0.20%",
+  	"not dead",
+	"ie >= 11"
   ],
   "dependencies": {
     "@babel/core": "^7.29.0",
