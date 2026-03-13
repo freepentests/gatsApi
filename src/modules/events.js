@@ -37,7 +37,7 @@ export class Events {
 		})
 	}
 
-	createPlayerInfoHandler(callback) {
+	createPlayerInfoListener(callback) {
 		this.createEntityUpdateListener((entities) => {
 			const players = [];
 
