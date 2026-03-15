@@ -1,4 +1,9 @@
-import { ChatMessage, Player } from './entities.js';
+import {
+	ChatMessage,
+	Player,
+	Bullet,
+	Building
+} from './entities.js';
 
 export class Events {
 	constructor(ws) {
@@ -21,8 +26,8 @@ export class Events {
 
 			entities.forEach((entity) => {
 				const values = entity.split(',');
-				if (values[0] !== 'c') return; // "c" is for chat messages
-				if (values.length < 17) return; // if the length of the values is less than 17 then it means a chat mesage wasn't sent
+				if (values[0] !== 'c') return; // "c" is the only packet containing chat messages
+				if (values[16] == undefined) return;
 
 				const senderId = values[1];
 				const messageContent = values[values.length - 1].replaceAll('~', ','); // we replace all occurances of "~" with "," because the server encodes , as ~ to make it easier for the client to parse.
@@ -65,6 +70,54 @@ export class Events {
 			}
 
 			if (players.length > 0) return callback(players);
+		});
+	}
+
+	createBulletsListener(callback) {
+		this.createEntityUpdateListener((entities) => {
+			const bullets = [];
+
+			entities.forEach((entity) => {
+				const values = entity.split(',');
+
+				if (values[0] !== 'h') return; // "h" is a bullet
+
+				const bulletId = values[1];
+				const bulletX = values[2];
+				const bulletY = values[3];
+
+				bullets.push(new Bullet(
+					bulletId,
+					bulletX,
+					bulletY
+				));
+			});
+
+			if (bullets.length > 0) return callback(bullets);
+		});
+	}
+
+	createBuildingsListener(callback) {
+		this.createEntityUpdateListener((entities) => {
+			const buildings = [];
+
+			entities.forEach((entity) => {
+				const values = entity.split(',');
+
+				if (values[0] !== 'k') return; // "k" is a building
+
+				const buildingId = values[1];
+				const buildingX = values[2];
+				const buildingY = values[3];
+
+				buildings.push(new Building(
+					buildingId,
+					buildingX,
+					buildingY
+				));
+			});
+
+			if (buildings.length > 0) return callback(buildings);
 		});
 	}
 }

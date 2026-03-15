@@ -18,3 +18,21 @@ export class Player {
 	}
 }
 
+export class Bullet {
+	constructor(bulletId, bulletX, bulletY) {
+		this.bulletId = parseInt(bulletId);
+		this.bulletX = parseInt(bulletX);
+		this.bulletY = parseInt(bulletY);
+		return this
+	}
+}
+
+export class Building {
+	constructor(buildingId, buildingX, buildingY) {
+		this.buildingId = parseInt(buildingId);
+		this.buildingX = parseInt(buildingX);
+		this.buildingY = parseInt(buildingY);
+		return this;
+	}
+}
+
