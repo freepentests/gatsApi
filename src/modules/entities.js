@@ -36,3 +36,7 @@ export class Building {
 	}
 }
 
+export class Wall {
+	constructor() {}
+}
+
