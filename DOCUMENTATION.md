@@ -4,11 +4,13 @@ Welcome to gatsApi. Our documentation is designed to guide you through features 
 
 ## 1. Initializing GatsApi
 
-GatsApi is a class, and to access its methods, you must first initialize it. The GatsApi constructor takes a single argument - a websocket. To get your main player's websocket, you need to first hook it. You must write your own logic that intercepts and captures all websockets when they are opened.
+GatsApi is a class, and to access its methods, you must first initialize it. The GatsApi constructor takes a single argument - a websocket.
 
-Once you have hooked the websocket, you can initialize GatsApi using the following syntax:
+You can initialize GatsApi using the following syntax:
 
 ```js
+const ws = new WebSocket('wss://eu-c-1.gats.io/1cd32fe1-8975-41ef-9920-d16c833bbf26');
+
 const gatsApi = new GatsApi(ws);
 ```
 
