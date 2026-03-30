@@ -7,7 +7,7 @@ export class Inputs {
 		this.ws.send(`k,${argOne},${argTwo}\x00`);
 	}
 
-	sendPing() {
+	sendHeartbeat() {
 		this.ws.send('.');
 	}
 

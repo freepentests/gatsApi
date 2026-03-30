@@ -8,25 +8,23 @@ export class GatsApi {
 		ws.binaryType = 'arraybuffer';
 
 		this.ws = ws;
+		this.myPlayer = null;
 		this.game = new Game(this.ws);
 		this.inputs = new Inputs(this.ws);
 		this.upgrades = new Upgrades(this.ws);
 		this.events = new Events(this.ws);
 
-		ws.onopen = this.connect.bind(this);
-
-		console.log('GatsApi Initialized!');
+		this.events.addPacketListener('VERSION', this.onVersion.bind(this));
+		this.events.addPacketListener('PLAYER_INFO', this.onPlayerInfo.bind(this));
 	}
 
-	sendHeartbeat() {
-		this.ws.send('.');
+	onPlayerInfo(e) {
+		this.myPlayer = e[0];
 	}
 
-	connect() {
-		this.events.createConnectListener(() => {
-			this.ws.send(`q,${Date.now()}`);
-			setInterval(this.sendHeartbeat.bind(this), 1000);
-		})
+	onVersion(e) {
+		this.game.sendTimestamp();
+		setInterval(this.inputs.sendHeartbeat.bind(this.inputs), 1000);
 	}
 
 	// create some constants to replace the magic numbers in packets
