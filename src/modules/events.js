@@ -10,6 +10,17 @@ export class Events {
 		this.ws = ws;
 	}
 
+	createConnectListener(callback) {
+		this.ws.addEventListener('message', (msg) => {
+			if (typeof msg.data === 'string') return;
+			const textData = new TextDecoder().decode(msg.data);
+			if (!textData.startsWith('version,')) return;
+
+			const version = textData.split(',')[1];
+			callback(version);
+		});
+	}
+
 	createEntityUpdateListener(callback) {
 		this.ws.addEventListener('message', (msg) => {
 			const textData = new TextDecoder().decode(msg.data);

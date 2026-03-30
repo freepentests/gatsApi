@@ -3,16 +3,30 @@ import { Inputs } from './modules/inputs.js';
 import { Upgrades } from './modules/upgrades.js';
 import { Events } from './modules/events.js'
 
-class GatsApi {
+export class GatsApi {
 	constructor(ws) {
 		ws.binaryType = 'arraybuffer';
 
-		this.game = new Game(ws);
-		this.inputs = new Inputs(ws);
-		this.upgrades = new Upgrades(ws);
-		this.events = new Events(ws);
+		this.ws = ws;
+		this.game = new Game(this.ws);
+		this.inputs = new Inputs(this.ws);
+		this.upgrades = new Upgrades(this.ws);
+		this.events = new Events(this.ws);
+
+		ws.onopen = this.connect.bind(this);
 
 		console.log('GatsApi Initialized!');
+	}
+
+	sendHeartbeat() {
+		this.ws.send('.');
+	}
+
+	connect() {
+		this.events.createConnectListener(() => {
+			this.ws.send(`q,${Date.now()}`);
+			setInterval(this.sendHeartbeat.bind(this), 1000);
+		})
 	}
 
 	// create some constants to replace the magic numbers in packets
@@ -65,6 +79,4 @@ class GatsApi {
 		frag: 19
 	}
 }
-
-window.GatsApi = GatsApi;
 
