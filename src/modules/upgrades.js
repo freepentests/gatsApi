@@ -9,7 +9,7 @@ export class Upgrades {
 
 	useItem() {
 		this.ws.send(`k,5,1\x00`);
-		setInterval(() => {
+		setTimeout(() => {
 			this.ws.send(`k,5,0\x00`)
 		}, 200);
 	}
