@@ -1,33 +1,19 @@
 {
-  "name": "gatsapi",
+  "name": "gatsapi2",
   "version": "1.0.0",
   "description": "GatsApi is a free, open-source API that enables developers to programmatically interact with gats.io via websockets.",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.cjs"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freepentests/gatsApi.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "browserslist": [
-    "> 0.20%",
-    "not dead",
-    "ie >= 11"
-  ],
-  "dependencies": {
-    "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.0",
-    "babel-loader": "^10.1.1",
-    "webpack": "^5.105.4",
-    "webpack-cli": "^6.0.1"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/freepentests/gatsApi.git"
-  },
   "bugs": {
     "url": "https://github.com/freepentests/gatsApi/issues"
   },
