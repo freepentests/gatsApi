@@ -4,13 +4,13 @@ export class Upgrades {
 	}
 
 	upgrade(itemId, slot) {
-		this.ws.send(`u,${itemId},${slot}\x00`)
+		this.ws.send(`u,${itemId},${slot}`);
 	}
 
 	useItem() {
-		this.ws.send(`k,5,1\x00`);
+		this.ws.send(`k,5,1`);
 		setTimeout(() => {
-			this.ws.send(`k,5,0\x00`)
+			this.ws.send(`k,5,0`);
 		}, 200);
 	}
 }

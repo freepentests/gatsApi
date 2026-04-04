@@ -4,7 +4,7 @@ export class Inputs {
 	}
 
 	sendInput(argOne, argTwo) {
-		this.ws.send(`k,${argOne},${argTwo}\x00`);
+		this.ws.send(`k,${argOne},${argTwo}`);
 	}
 
 	sendHeartbeat() {
@@ -12,7 +12,7 @@ export class Inputs {
 	}
 
 	aim(degrees) {
-		this.ws.send(`m,2222,2222,${degrees}\x00`);
+		this.ws.send(`m,2222,2222,${degrees}`);
 	}
 
 	startMove(directionId) {
