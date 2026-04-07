@@ -3,6 +3,8 @@ import { Inputs } from './Modules/Inputs.js';
 import { Upgrades } from './Modules/Upgrades.js';
 import { Events } from './Modules/Events.js'
 
+export * from './Modules/ServerList.js';
+
 export class GatsApi {
 	constructor(ws) {
 		ws.binaryType = 'arraybuffer';
