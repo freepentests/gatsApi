@@ -1,7 +1,7 @@
-import { Game } from './modules/game.js';
-import { Inputs } from './modules/inputs.js';
-import { Upgrades } from './modules/upgrades.js';
-import { Events } from './modules/events.js'
+import { Game } from './Modules/Game.js';
+import { Inputs } from './Modules/Inputs.js';
+import { Upgrades } from './Modules/Upgrades.js';
+import { Events } from './Modules/Events.js'
 
 export class GatsApi {
 	constructor(ws) {

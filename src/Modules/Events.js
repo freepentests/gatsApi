@@ -1,4 +1,4 @@
-import { Codec } from './network/codec.js';
+import { Codec } from './Network/Codec.js';
 
 export class Events {
 	constructor(ws) {
